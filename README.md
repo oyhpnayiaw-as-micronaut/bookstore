@@ -32,7 +32,7 @@
 
 # 📖 Bookstore CMS <a name="about-project"></a>
 
-Bookstore CMS
+Bookstore CMS is an single page app built with react, redux and react-router-dom. You can create, update, delete books without reloading the page.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -175,4 +175,3 @@ I would like to thank Microverse for creating great community.
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
