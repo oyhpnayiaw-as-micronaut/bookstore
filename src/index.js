@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import App from 'App';
-import createStore from 'redux/store';
+import createStore from './redux/store';
+import App from './App';
 
-import 'styles/index.css';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = createStore();

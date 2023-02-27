@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Form() {
+function BookForm() {
   const [state, setState] = useState({
     title: '',
     author: '',
@@ -26,4 +26,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default BookForm;

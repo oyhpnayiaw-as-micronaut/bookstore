@@ -22,35 +22,6 @@ html {
   font-size: 16px;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  height: 4rem;
-  padding: 2rem;
-  background-color: #fff;
-  box-shadow: 1px 0 3px grey;
-}
-
 main {
   padding: 1rem 2rem;
-}
-
-.logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--color-azure);
-  text-decoration: none;
-}
-
-.nav-items {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  list-style: none;
-  gap: 1rem;
-}
-
-.nav-link {
-  text-decoration: none;
 }
