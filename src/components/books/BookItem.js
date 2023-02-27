@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Book({ title, author }) {
+function BookItem({ title, author }) {
   return (
     <div style={{ display: 'flex', gap: '1rem', margin: '1rem' }}>
       <div>{title}</div>
@@ -11,9 +11,9 @@ function Book({ title, author }) {
   );
 }
 
-Book.propTypes = {
+BookItem.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };
 
-export default Book;
+export default BookItem;

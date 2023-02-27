@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Form from 'components/Form';
-import Book from 'components/Book';
+import BookForm from './BookForm';
+import BookItem from './BookItem';
 
 function Books() {
   const books = [
@@ -20,9 +20,9 @@ function Books() {
   return (
     <div>
       {books.map((e) => (
-        <Book key={e.id} title={e.title} author={e.author} />
+        <BookItem key={e.id} title={e.title} author={e.author} />
       ))}
-      <Form />
+      <BookForm />
     </div>
   );
 }

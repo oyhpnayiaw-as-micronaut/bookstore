@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { NavLink } from 'react-router-dom';
+
+import styles from './Navbar.module.css';
 
 function Navbar() {
   const navItems = [
@@ -15,17 +16,17 @@ function Navbar() {
   ];
 
   return (
-    <header>
-      <NavLink className="logo" to="/">
+    <header className={styles.header}>
+      <NavLink className={styles.logo} to="/">
         Bookstore CMS
       </NavLink>
       <nav>
-        <ul className="nav-items">
+        <ul className={styles.navItems}>
           {navItems.map((e) => (
             <li key={e.name}>
               <NavLink
                 to={e.path}
-                className="nav-link"
+                className={styles.navLink}
                 style={({ isActive }) => ({
                   opacity: isActive ? 1 : 0.5,
                 })}
