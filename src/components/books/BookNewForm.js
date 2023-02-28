@@ -1,40 +1,80 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { bookAdded } from 'src/redux/books/booksSlice';
+import { createBook } from 'src/redux/books/booksSlice';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
 
 const initialState = { title: '', author: '' };
 
 function BookNewForm() {
-  const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+
+  /** @param {React.FormEvent<HTMLFormElement>} e */
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(bookAdded(state));
-    setState(initialState);
+    setError('');
+    setLoading(true);
+
+    try {
+      const { title, author } = state;
+
+      if (!title.trim()) {
+        throw new Error('Title cannot be empty.');
+      }
+
+      if (!author.trim()) {
+        throw new Error('Author cannot be empty.');
+      }
+
+      await dispatch(
+        createBook({
+          title: title.trim(),
+          author: author.trim(),
+        }),
+      );
+
+      setState(initialState);
+    } catch (err) {
+      if (err.message.includes('Title')) {
+        e.target.title.focus();
+      } else if (err.message.includes('Author')) {
+        e.target.author.focus();
+      }
+
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        name="title"
-        placeholder="Book Title"
-        value={state.title}
-        setValue={setState}
-        required
-      />
-      <Input
-        name="author"
-        placeholder="Author"
-        value={state.author}
-        setValue={setState}
-        required
-      />
-      <Button type="submit">Add Book</Button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <Input
+          name="title"
+          placeholder="Book Title"
+          value={state.title}
+          setValue={setState}
+          required
+        />
+        <Input
+          name="author"
+          placeholder="Author"
+          value={state.author}
+          setValue={setState}
+          required
+        />
+        <Button type="submit" disabled={loading}>
+          Add Book
+        </Button>
+      </form>
+      {error && <p>{error}</p>}
+    </div>
   );
 }
 
