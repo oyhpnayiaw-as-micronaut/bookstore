@@ -22,6 +22,7 @@ specifiers:
   react-redux: ^8.0.5
   react-router-dom: ^6.8.1
   react-scripts: 5.0.1
+  reselect: ^4.1.7
   stylelint: 13.x
   stylelint-config-standard: 21.x
   stylelint-csstree-validator: 1.x
@@ -40,6 +41,7 @@ dependencies:
   react-redux: 8.0.5_egguyi6kvemdtrnkbl3bdoeaey
   react-router-dom: 6.8.2_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_vr6snled5rl5vx43kugs7iewxe
+  reselect: 4.1.7
   web-vitals: 2.1.4
 
 devDependencies:
