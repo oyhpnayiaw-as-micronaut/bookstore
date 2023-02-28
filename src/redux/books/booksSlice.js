@@ -1,50 +1,60 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 
+import * as api from 'src/api';
+
 const initialState = {
-  list: [
-    {
-      id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  list: [],
+  isFetching: false,
   filter: {
     category: 'All',
   },
 };
 
+// Async Thunks Actions
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
+  const res = await api.getBooks();
+  return res;
+});
+
+export const createBook = createAsyncThunk('books/createBook', async (book) => {
+  const res = await api.postBook(book);
+  return res;
+});
+
+export const removeBook = createAsyncThunk('books/removeBook', async (id) => {
+  await api.deleteBook(id);
+  return id;
+});
+
+// Slice
 const slice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    bookAdded: (state, action) => {
-      state.list.push({ ...action.payload, id: crypto.randomUUID() });
-      state.filter.category = 'All';
+    bookCategoryChanged: (state, { payload }) => {
+      state.filter.category = payload.category;
     },
-    bookRemoved: (state, action) => {
-      state.list = state.list.filter((e) => e.id !== action.payload.id);
-    },
-    bookCategoryChanged: (state, action) => {
-      state.filter.category = action.payload.category;
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.pending, (state) => {
+        state.isFetching = true;
+      })
+      .addCase(fetchBooks.fulfilled, (state, { payload }) => {
+        state.isFetching = false;
+        state.list = payload;
+      })
+      .addCase(createBook.fulfilled, (state, { payload }) => {
+        state.list.push(payload);
+      })
+      .addCase(removeBook.fulfilled, (state, action) => {
+        state.list = state.list.filter((e) => e.id !== action.payload);
+      });
   },
 });
 
-export const { bookAdded, bookRemoved, bookCategoryChanged } = slice.actions;
+export const { bookCategoryChanged } = slice.actions;
 
 export default slice.reducer;
 
@@ -74,3 +84,5 @@ export const selectBookCategories = createSelector(
 );
 
 export const selectBookCount = (state) => state.books.list.length;
+
+export const selectBookFetchingState = (state) => state.books.isFetching;
