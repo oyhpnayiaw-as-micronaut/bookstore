@@ -67,10 +67,6 @@ export const selectBookList = createSelector(
       return list;
     }
 
-    if (filter.category === 'Uncategorized') {
-      return list.filter((e) => !e.category);
-    }
-
     return list.filter((e) => e.category === filter.category);
   },
 );
@@ -78,7 +74,7 @@ export const selectBookList = createSelector(
 export const selectBookCategories = createSelector(
   (state) => state.books.list,
   (list) => {
-    const categories = list.map((e) => e.category || 'Uncategorized');
+    const categories = list.map((e) => e.category);
     return ['All', ...new Set(categories)];
   },
 );
