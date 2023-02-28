@@ -10,7 +10,6 @@ const slice = createSlice({
   initialState,
   reducers: {
     statusChecked: (state) => {
-      console.log('checkStatus');
       state.status = 'Under construction';
     },
   },

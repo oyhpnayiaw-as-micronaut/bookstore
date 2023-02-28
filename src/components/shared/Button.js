@@ -9,12 +9,14 @@ function Button({
   onClick,
   type,
   className,
+  disabled,
 }) {
   return (
     <button
       className={cn(styles.button, className)}
       type={type === 'submit' ? 'submit' : 'button'}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -26,12 +28,14 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit']),
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
   onClick: () => {},
   type: 'button',
   className: null,
+  disabled: false,
 };
 
 export default Button;

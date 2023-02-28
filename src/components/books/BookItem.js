@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { bookRemoved } from 'src/redux/books/booksSlice';
+import { removeBook } from 'src/redux/books/booksSlice';
 import Button from '../shared/Button';
 
 function BookItem({ book }) {
   const { id, title, author } = book;
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(bookRemoved({ id }));
+  const handleDelete = async () => {
+    setLoading(true);
+    await dispatch(removeBook(id));
+    setLoading(false);
   };
 
   return (
     <div style={{ display: 'flex', gap: '1rem', margin: '1rem' }}>
       <div>{title}</div>
       <div>{author}</div>
-      <Button onClick={handleDelete}>
+      <Button onClick={handleDelete} disabled={loading}>
         Delete
       </Button>
     </div>
