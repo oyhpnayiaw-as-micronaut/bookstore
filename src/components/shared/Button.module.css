@@ -1,0 +1,15 @@
+.button {
+  background-color: var(--color-azure);
+  padding: 6px 16px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
