@@ -1,28 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectBookList } from 'src/redux/books/booksSlice';
 
-import BookForm from './BookForm';
+import BookFilter from './BookFilter';
 import BookItem from './BookItem';
+import BookNewForm from './BookNewForm';
 
 function Books() {
-  const books = [
-    {
-      id: crypto.randomUUID(),
-      title: 'Book 1',
-      author: 'Author 1',
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Book 2',
-      author: 'Author 2',
-    },
-  ];
+  const books = useSelector(selectBookList);
 
   return (
     <div>
-      {books.map((e) => (
-        <BookItem key={e.id} title={e.title} author={e.author} />
+      <BookFilter />
+      {books.map((book) => (
+        <BookItem key={book.id} book={book} />
       ))}
-      <BookForm />
+      <BookNewForm />
     </div>
   );
 }
