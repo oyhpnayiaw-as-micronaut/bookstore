@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Button from '../shared/Button';
+
 function Categories() {
   return (
     <div>
-      <button type="button">Check status</button>
+      <Button>Check status</Button>
     </div>
   );
 }
