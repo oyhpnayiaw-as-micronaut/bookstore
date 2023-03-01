@@ -1,5 +1,3 @@
-/* --font-family-montserrat: 'Montserrat', sans-serif; */
-/* --font-family-roboto-slab: 'Roboto Slab', serif; */
 .card {
   display: grid;
   grid-template-columns: 8fr auto 3fr;
@@ -52,11 +50,6 @@ section {
   border: none;
 }
 
-.actions > button:hover,
-.actions > button:focus {
-  text-decoration: underline;
-}
-
 .removeBtn {
   padding: 4px 12px;
   border-right: 1px solid #e8e8e8 !important;
@@ -106,7 +99,6 @@ section {
   font-size: 12px;
 }
 
-
 .chapterSection > h3 {
   opacity: 0.5;
   font-family: var(--font-family-roboto-slab);
@@ -130,4 +122,9 @@ section {
   font-size: 12px;
   padding: 8px 24px;
   text-transform: uppercase;
+}
+
+.actions > button:hover,
+.actions > button:focus {
+  text-decoration: underline;
 }
