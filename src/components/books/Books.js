@@ -5,9 +5,9 @@ import {
   selectBookFetchingState,
 } from 'src/redux/books/booksSlice';
 
-import BookFilter from './BookFilter';
 import BookItem from './BookItem';
 import BookNewForm from './BookNewForm';
+import styles from './Books.module.css';
 
 function Books() {
   const books = useSelector(selectBookList);
@@ -19,10 +19,11 @@ function Books() {
 
   return (
     <div>
-      <BookFilter />
-      {books.map((book) => (
-        <BookItem key={book.id} book={book} />
-      ))}
+      <div className={styles.bookList}>
+        {books.map((book) => (
+          <BookItem key={book.id} book={book} />
+        ))}
+      </div>
       <BookNewForm />
     </div>
   );

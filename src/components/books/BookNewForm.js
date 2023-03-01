@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { createBook } from 'src/redux/books/booksSlice';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
+import styles from './BookNewForm.module.css';
 
 const initialState = { title: '', author: '' };
 
@@ -54,7 +55,8 @@ function BookNewForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <h2 className={styles.title}>Add New Book</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Input
           name="title"
           placeholder="Book Title"
