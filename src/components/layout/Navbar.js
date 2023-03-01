@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 
+import UserIcon from './UserIcon';
 import styles from './Navbar.module.css';
 
 function Navbar() {
@@ -17,7 +19,7 @@ function Navbar() {
 
   return (
     <header className={styles.header}>
-      <div className="container">
+      <div className={cn(styles.navContainer, 'container')}>
         <NavLink className={styles.logo} to="/">
           Bookstore CMS
         </NavLink>
@@ -38,6 +40,7 @@ function Navbar() {
             ))}
           </ul>
         </nav>
+        <UserIcon className={styles.userIcon} />
       </div>
     </header>
   );
