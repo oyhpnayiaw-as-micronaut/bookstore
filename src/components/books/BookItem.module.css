@@ -1,0 +1,133 @@
+/* --font-family-montserrat: 'Montserrat', sans-serif; */
+/* --font-family-roboto-slab: 'Roboto Slab', serif; */
+.card {
+  display: grid;
+  grid-template-columns: 8fr auto 3fr;
+  place-items: center;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 22px 30px;
+  margin: 14px 0;
+  font-family: var(--font-family-montserrat);
+  font-weight: normal;
+  color: var(--color-black-two);
+  font-size: 14px;
+}
+
+section {
+  width: 100%;
+}
+
+.category {
+  opacity: 0.5;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.title {
+  margin: 2px 0 1px 0;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  font-family: var(--font-family-roboto-slab);
+}
+
+.author {
+  font-weight: 300;
+  color: #4386bf;
+  font-family: var(--font-family-roboto-slab);
+}
+
+.actions {
+  margin-top: 14px;
+}
+
+.actions > button {
+  font-family: var(--font-family-roboto-slab);
+  font-weight: 300;
+  color: #4386bf;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.actions > button:hover,
+.actions > button:focus {
+  text-decoration: underline;
+}
+
+.removeBtn {
+  padding: 4px 12px;
+  border-right: 1px solid #e8e8e8 !important;
+  border-left: 1px solid #e8e8e8 !important;
+  margin: 0 12px;
+}
+
+.removeBtn:disabled {
+  color: gray;
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.progress {
+  display: flex;
+  gap: 18px;
+  border-right: 1px solid #e8e8e8;
+  margin-right: 80px;
+}
+
+.progressCircle {
+  width: 55px;
+  height: 55px;
+  background: conic-gradient(#307bbe 0% 65%, #e8e8e8 60% 100%);
+  position: relative;
+  border-radius: 50%;
+}
+
+.progressCircle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 47px;
+  height: 47px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.progressText {
+  font-size: 28px;
+}
+
+.progressCompleted {
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+
+.chapterSection > h3 {
+  opacity: 0.5;
+  font-family: var(--font-family-roboto-slab);
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.chapterSection > p {
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  font-weight: 300;
+}
+
+.chapterSection > button {
+  margin-top: 16px;
+  font-family: var(--font-family-roboto-slab);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  padding: 8px 24px;
+  text-transform: uppercase;
+}
