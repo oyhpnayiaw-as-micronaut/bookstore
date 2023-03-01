@@ -5,7 +5,6 @@ import {
   selectBookFetchingState,
 } from 'src/redux/books/booksSlice';
 
-import BookFilter from './BookFilter';
 import BookItem from './BookItem';
 import BookNewForm from './BookNewForm';
 
@@ -19,7 +18,6 @@ function Books() {
 
   return (
     <div>
-      <BookFilter />
       {books.map((book) => (
         <BookItem key={book.id} book={book} />
       ))}
