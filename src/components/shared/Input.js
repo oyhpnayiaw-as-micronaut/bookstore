@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
+
+import styles from './Input.module.css';
 
 function Input({
+  className,
   name,
   value,
   setValue,
@@ -15,6 +19,7 @@ function Input({
 
   return (
     <input
+      className={cn(styles.input, className)}
       name={name}
       value={value}
       onChange={handleChange}
@@ -25,6 +30,7 @@ function Input({
 }
 
 Input.propTypes = {
+  className: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
@@ -33,6 +39,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  className: '',
   placeholder: '',
   required: false,
 };
